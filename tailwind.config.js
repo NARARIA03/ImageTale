@@ -10,6 +10,7 @@ export default {
         "custom-blue": "#40A3FF",
         "custom-deepblue": "#2C73FF",
         "custom-grey": "#D9D9D9",
+        "custom-pink": "#FFD6D6",
       },
       fontFamily: {
         cookierun: ["CookieRunOTF"],
