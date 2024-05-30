@@ -1,9 +1,6 @@
 import React from "react";
+import NavBar from "../components/mainpage/navbar";
 
 export default function MainPage(): React.JSX.Element {
-  return (
-    <div>
-      <p>헬로 월드 ~</p>
-    </div>
-  );
+  return <NavBar />;
 }
