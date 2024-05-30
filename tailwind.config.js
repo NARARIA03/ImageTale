@@ -4,9 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        "custom-white": "#eee",
+        "custom-white": "#f2f2f2",
         "custom-black": "#444",
+        "custom-skyblue": "#CCE4FB",
         "custom-blue": "#40A3FF",
+        "custom-deepblue": "#2C73FF",
         "custom-grey": "#D9D9D9",
       },
       fontFamily: {
