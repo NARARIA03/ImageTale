@@ -1,7 +1,10 @@
-import BookBackground from "../../components/storybookpage/bookbackground";
-import BookContents from "../../components/storybookpage/bookcontents/bookcontents";
-import { StoryBookPageProps } from "./storybookpage.d";
-import { useStoryBookData } from "../../hooks/usestorybookdata/usestorybookdata";
+import BookBackground from "../components/storybookpage/bookbackground";
+import BookContents from "../components/storybookpage/bookcontents";
+import { useStoryBookData } from "../hooks/usestorybookdata";
+
+interface StoryBookPageProps {
+  storyBookId: number;
+}
 
 export default function StoryBookPage({
   storyBookId,

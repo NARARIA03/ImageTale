@@ -9,8 +9,3 @@ export interface StoryBook {
   id: number;
   data: StoryBookData[];
 }
-
-export interface useStoryBookDataResult {
-  isLoading: boolean;
-  storyBookData: StoryBook | null;
-}

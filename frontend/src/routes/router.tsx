@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MainPage from "../pages/mainpage";
-import StoryBookPage from "../pages/storybookpage/storybookpage";
+import StoryBookPage from "../pages/storybookpage";
 
 export default function Router(): React.JSX.Element {
   return (

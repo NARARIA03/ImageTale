@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { BookContentsProps } from "./bookcontents.d";
+import { StoryBook } from "../../types/storybooktypes";
+
+interface BookContentsProps {
+  storyBookData: StoryBook;
+}
 
 export default function BookContents({
   storyBookData,

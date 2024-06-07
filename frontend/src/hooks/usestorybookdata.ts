@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { StoryBook, useStoryBookDataResult } from "./usestorybookdata.d";
+import { StoryBook } from "../types/storybooktypes";
+
+interface useStoryBookDataResult {
+  isLoading: boolean;
+  storyBookData: StoryBook | null;
+}
 
 export function useStoryBookData(storyBookId: number): useStoryBookDataResult {
   const [isLoading, setIsLoading] = useState<boolean>(true);
