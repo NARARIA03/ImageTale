@@ -6,9 +6,7 @@ interface StoryBookPageProps {
   storyBookId: number;
 }
 
-export default function StoryBookPage({
-  storyBookId,
-}: StoryBookPageProps): React.JSX.Element {
+export default function StoryBookPage({ storyBookId }: StoryBookPageProps): React.JSX.Element {
   const { isLoading, storyBookData } = useStoryBookData(storyBookId);
 
   if (isLoading) {

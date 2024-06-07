@@ -5,9 +5,7 @@ interface BookContentsProps {
   storyBookData: StoryBook;
 }
 
-export default function BookContents({
-  storyBookData,
-}: BookContentsProps): React.JSX.Element {
+export default function BookContents({ storyBookData }: BookContentsProps): React.JSX.Element {
   const [curIdx, setCurIdx] = useState<number>(0);
 
   const prevBtnHandler = () => {
@@ -26,11 +24,7 @@ export default function BookContents({
   return (
     <div className="w-full h-full absolute px-14 pt-7 pb-[5rem]">
       <div className="w-full h-full flex flex-col justify-center items-center">
-        <img
-          src={`data:image/png;base64,${curItem.img}`}
-          alt="storybook"
-          className="rounded-2xl shadow-2xl shadow-stone-600 w-2/3"
-        />
+        <img src={`data:image/png;base64,${curItem.img}`} alt="storybook" className="rounded-2xl shadow-2xl shadow-stone-600 w-2/3" />
         <div className="bg-custom-pink w-11/12 h-52 flex justify-center items-center mt-10 rounded-3xl shadow-2xl shadow-stone-600 overflow-hidden">
           <div className="m-10">
             <p className="text-xl break-words">{curItem.content}</p>

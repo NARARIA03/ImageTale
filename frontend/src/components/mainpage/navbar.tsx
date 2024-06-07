@@ -22,16 +22,10 @@ export default function NavBar(): React.JSX.Element {
       </div>
 
       <div className="flex flex-row">
-        <a
-          href="#"
-          className="block py-2 px-4 mx-2 text-sm bg-custom-blue text-custom-white rounded-md shadow-2xl shadow-stone-600"
-        >
+        <a href="#" className="block py-2 px-4 mx-2 text-sm bg-custom-blue text-custom-white rounded-md shadow-2xl shadow-stone-600">
           로그인
         </a>
-        <a
-          href="#"
-          className="block py-2 px-4 mx-2 text-sm bg-custom-grey text-custom-black rounded-md shadow-2xl shadow-stone-600"
-        >
+        <a href="#" className="block py-2 px-4 mx-2 text-sm bg-custom-grey text-custom-black rounded-md shadow-2xl shadow-stone-600">
           회원가입
         </a>
       </div>
