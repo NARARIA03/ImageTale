@@ -25,7 +25,7 @@ mock_story_res = {
         {
             "url": "/Users/hyunseong/Documents/capstone/backend/img/test-storybook-img.png",
             "revised_prompt": "A whimsical forest scene with a friendly fox and a curious rabbit, surrounded by tall trees and colorful flowers, in a charming and magical fairy-tale style.",
-            "content": "Once upon a time in a whimsical forest, a friendly fox named Felix and a curious rabbit named Rosie became best friends. They loved exploring the forest, discovering new flowers and secret paths. Every day was an adventure filled with laughter and wonder.",
+            "content": "Once upon a time in a whimsical forest, a friendly fox named Felix and a curious rabbit named Rosie became best friends. They loved exploring the forest, discovering new flowers and secret paths.",
         },
         {
             "url": "/Users/hyunseong/Documents/capstone/backend/img/test-storybook-img2.png",
