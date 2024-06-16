@@ -9,7 +9,7 @@ export default function Router(): React.JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/storybook" element={<StoryBookPage storyBookId={1} />} />
+        <Route path="/storybook" element={<StoryBookPage storyBookId={2} />} />
         {/* <Route path="users/*" element={} /> */}
       </Routes>
     </BrowserRouter>

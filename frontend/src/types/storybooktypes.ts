@@ -1,11 +1,15 @@
-interface StoryBookData {
-  url: string;
-  revised_prompt: string;
+export interface StoryBookData {
+  page: number;
   content: string;
-  img: string;
+  nextPage: number[];
+  prevPage: number;
+  image: string;
+  talkinghead: string;
+  choice: undefined | string;
 }
 
 export interface StoryBook {
   id: number;
+  title: string;
   data: StoryBookData[];
 }

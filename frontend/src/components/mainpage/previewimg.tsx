@@ -9,7 +9,7 @@ import img6 from "../../img/img6.jpg";
 
 export default function PreviewImg(): React.JSX.Element {
   return (
-    <div className="w-full overflow-scroll">
+    <div className="w-full overflow-x-scroll">
       <div className="flex whitespace-nowrap">
         <div className="flex">
           <img src={img1} className="w-64 m-12 rounded-[35px] shadow-2xl shadow-stone-600" />

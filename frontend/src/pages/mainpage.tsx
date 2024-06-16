@@ -7,11 +7,13 @@ import PreviewImg from "../components/mainpage/previewimg";
 
 export default function MainPage(): React.JSX.Element {
   return (
-    <div className="h-full bg-custom-white">
-      <NavBar />
-      <HelperBar />
-      <StoryGuidePanel />
-      <PreviewImg />
+    <div className="h-screen bg-custom-white">
+      <div className="h-full bg-custom-white">
+        <NavBar />
+        <HelperBar />
+        <StoryGuidePanel />
+        <PreviewImg />
+      </div>
     </div>
   );
 }
