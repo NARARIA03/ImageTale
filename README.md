@@ -13,4 +13,3 @@
 - python: 3.11.7
 - fastapi: 0.111.0
 - uvicorn: 0.30.0
-- pillow==10.3.0
