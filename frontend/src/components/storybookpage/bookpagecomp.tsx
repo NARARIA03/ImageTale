@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StoryBookData } from "../../types/storybooktypes";
+import BookPageTopNav from "./bookpagetopnav";
 
 interface BookPageProps {
   curPage: StoryBookData;
@@ -38,6 +39,14 @@ export default function BookPageComponent({
         </div>
       )}
 
+      {/* navigation bar */}
+      <BookPageTopNav
+        toggleHideTalkingHead={toggleHideTalkingHead}
+        toggleDisableTalkingHead={toggleDisableTalkingHead}
+        hideTalkingHeadFlag={hideTalkingHeadFlag}
+        disableTalkingHeadFlag={disableTalkingHeadFlag}
+      />
+
       <div className="w-full flex flex-row justify-between items-end">
         {/* prev btn */}
         <button onClick={prevBtnHandler} disabled={!leftArrowFlag} className="mr-4 px-4 py-2 opacity-80 disabled:opacity-50 ">
@@ -56,6 +65,7 @@ export default function BookPageComponent({
           <img src="/img/right-arrow.png" alt="next page button" className="w-20 h-14" />
         </button>
       </div>
+
       {/* storybook content */}
       <div className="w-full bg-custom-pink flex justify-center items-center rounded-3xl shadow-2xl shadow-stone-600 mt-7">
         <div className="m-10">

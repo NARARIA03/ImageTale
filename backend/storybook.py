@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+import asyncio
 
 db = []
 
@@ -161,4 +162,5 @@ async def get_storybook(storybookId: int) -> dict:
                 page["talkinghead"] = (
                     f"http://0.0.0.0:8080/talkinghead/{return_storybook['id']}/{page['page']}"
                 )
+            await asyncio.sleep(2)  # 2초 지연, 실제 배포 시는 제거
             return return_storybook
