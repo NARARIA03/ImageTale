@@ -49,7 +49,11 @@ export default function BookPageComponent({
 
       <div className="w-full flex flex-row justify-between items-end">
         {/* prev btn */}
-        <button onClick={prevBtnHandler} disabled={!leftArrowFlag} className="mr-4 px-4 py-2 opacity-80 disabled:opacity-50 ">
+        <button
+          onClick={prevBtnHandler}
+          disabled={!leftArrowFlag}
+          className="mr-4 px-4 py-2 opacity-80 disabled:opacity-50 hover:scale-110 transition"
+        >
           <img src="/img/right-arrow.png" alt="previous page button" className="w-20 h-14 rotate-180" />
         </button>
         {/* storybook image */}
@@ -61,7 +65,11 @@ export default function BookPageComponent({
           />
         </div>
         {/* next btn */}
-        <button onClick={nextBtnHandler} disabled={!rightArrowFlag} className="ml-4 px-4 py-2 opacity-80 disabled:opacity-50 ">
+        <button
+          onClick={nextBtnHandler}
+          disabled={!rightArrowFlag}
+          className="ml-4 px-4 py-2 opacity-80 disabled:opacity-50 hover:scale-110 transition"
+        >
           <img src="/img/right-arrow.png" alt="next page button" className="w-20 h-14" />
         </button>
       </div>

@@ -22,13 +22,13 @@ export default function BookPageTopNav({
 
   return (
     <div className="absolute top-24 right-3 md:top-10 lg:top-5">
-      <button onClick={goHome} className="w-12 h-12 mx-1">
+      <button onClick={goHome} className="w-12 h-12 mx-1 hover:scale-110 transition">
         <img src="/img/home.png" alt="Go mainpage button" />
       </button>
-      <button onClick={toggleDisableTalkingHead} className="w-12 h-12 mx-1">
+      <button onClick={toggleDisableTalkingHead} className="w-12 h-12 mx-1 hover:scale-110 transition">
         <img src="/img/volume.png" alt="Disable talkinghead button" className={disableTalkingHeadFlag ? "opacity-70" : ""} />
       </button>
-      <button onClick={toggleHideTalkingHead} className="w-12 h-12 mx-1">
+      <button onClick={toggleHideTalkingHead} className="w-12 h-12 mx-1 hover:scale-110 transition">
         <img src="/img/user.png" alt="Hide talkinghead button" className={hideTalkingHeadFlag ? "opacity-70" : ""} />
       </button>
     </div>
