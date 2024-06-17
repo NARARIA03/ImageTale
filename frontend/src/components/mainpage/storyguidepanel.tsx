@@ -8,7 +8,7 @@ export default function StoryGuidePanel(): React.JSX.Element {
 
       <div className="w-2/3 flex flex-row my-10 justify-center items-center">
         <a
-          href="/storybook"
+          href="/storybook/2"
           className="block py-2 px-4 mx-4 text-base bg-custom-blue text-custom-white rounded-md shadow-2xl shadow-stone-600"
         >
           새로운 이야기 만들기

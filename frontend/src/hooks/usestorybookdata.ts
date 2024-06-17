@@ -7,23 +7,25 @@ interface useStoryBookDataResult {
   storyBookData: StoryBook | null;
 }
 
-export function useStoryBookData(storyBookId: number): useStoryBookDataResult {
+export function useStoryBookData(storyBookId: string | undefined): useStoryBookDataResult {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [storyBookData, setStoryBookData] = useState<StoryBook | null>(null);
 
   useEffect(() => {
     setIsLoading(true);
-    axios
-      .get<StoryBook>(`http://0.0.0.0:8080/storybook/${storyBookId}`)
-      .then((res) => {
-        console.log(`fetch complete storybook ${storyBookId}`);
-        setStoryBookData(res.data);
-        setIsLoading(false);
-      })
-      .catch((e) => {
-        console.error(`error detect ${e}`);
-        setIsLoading(false);
-      });
+    if (storyBookId) {
+      axios
+        .get<StoryBook>(`http://0.0.0.0:8080/storybook/${storyBookId}`)
+        .then((res) => {
+          console.log(`fetch complete storybook ${storyBookId}`);
+          setStoryBookData(res.data);
+          setIsLoading(false);
+        })
+        .catch((e) => {
+          console.error(`error detect ${e}`);
+          setIsLoading(false);
+        });
+    }
   }, [storyBookId]);
 
   return { isLoading, storyBookData };

@@ -2,12 +2,10 @@ import BookBackground from "../components/storybookpage/bookbackground";
 import BookContents from "../components/storybookpage/bookcontents";
 import LoadingSpinner from "../components/common/loadingcomp";
 import { useStoryBookData } from "../hooks/usestorybookdata";
+import { useParams } from "react-router-dom";
 
-interface StoryBookPageProps {
-  storyBookId: number;
-}
-
-export default function StoryBookPage({ storyBookId }: StoryBookPageProps): React.JSX.Element {
+export default function StoryBookPage(): React.JSX.Element {
+  const { storyBookId } = useParams();
   const { isLoading, storyBookData } = useStoryBookData(storyBookId);
 
   if (isLoading) {
