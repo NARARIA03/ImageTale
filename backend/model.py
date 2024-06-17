@@ -1,13 +1,18 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Union
 
 
 class StoryBookData(BaseModel):
-    url: str
-    revised_prompt: str
+    page: int
     content: str
+    nextPage: List[int]
+    prevPage: int
+    image: str
+    talkinghead: str
+    choice: Union[str, None]
 
 
 class StoryBook(BaseModel):
     id: int
+    title: str
     data: List[StoryBookData]
