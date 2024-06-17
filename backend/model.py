@@ -16,3 +16,7 @@ class StoryBook(BaseModel):
     id: int
     title: str
     data: List[StoryBookData]
+
+
+class QueryType(BaseModel):
+    query: str
