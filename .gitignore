@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# frontend
+/frontend/.env
+
 # backend
 /backend/.venv
 /backend/__pycache__

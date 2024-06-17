@@ -5,7 +5,7 @@ export default function EndPopupComponent(): React.JSX.Element {
   const navigate = useNavigate();
 
   const handleYesBtn = () => {
-    navigate("/talking/");
+    navigate("/talking/2");
   };
 
   const handleNoBtn = () => {
