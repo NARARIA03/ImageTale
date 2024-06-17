@@ -26,10 +26,10 @@ export default function BookPageTopNav({
         <img src="/img/home.png" alt="Go mainpage button" />
       </button>
       <button onClick={toggleDisableTalkingHead} className="w-12 h-12 mx-1 hover:scale-110 transition">
-        <img src="/img/volume.png" alt="Disable talkinghead button" className={disableTalkingHeadFlag ? "opacity-70" : ""} />
+        <img src={disableTalkingHeadFlag ? "/img/mute-volume.png" : "/img/volume.png"} alt="Disable talkinghead button" />
       </button>
       <button onClick={toggleHideTalkingHead} className="w-12 h-12 mx-1 hover:scale-110 transition">
-        <img src="/img/user.png" alt="Hide talkinghead button" className={hideTalkingHeadFlag ? "opacity-70" : ""} />
+        <img src={hideTalkingHeadFlag ? "/img/hide-user.png" : "/img/user.png"} alt="Hide talkinghead button" />
       </button>
     </div>
   );
