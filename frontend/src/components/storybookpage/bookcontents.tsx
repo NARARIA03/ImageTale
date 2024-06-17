@@ -3,6 +3,7 @@ import { StoryBook, StoryBookData } from "../../types/storybooktypes";
 import SelectPageComponent from "./selectpagecomp";
 import BookPageComponent from "./bookpagecomp";
 import BookBackground from "./bookbackground";
+import EndPopupComponent from "./endpopupcomp";
 
 interface BookContentsProps {
   storyBookData: StoryBook;
@@ -14,6 +15,9 @@ export default function BookContents({ storyBookData }: BookContentsProps): Reac
   const [selectFlag, setSelectFlag] = useState<boolean>(false);
   const [leftArrowFlag, setLeftArrowFlag] = useState<boolean>(false);
   const [rightArrowFlag, setRightArrowFlag] = useState<boolean>(true);
+  const [endStoryFlag, setEndStoryFlag] = useState<boolean>(false);
+
+  const darknessClass = endStoryFlag ? "brightness-50" : "";
 
   const prevBtnHandler = () => {
     if (curPage.page > 1) {
@@ -21,6 +25,7 @@ export default function BookContents({ storyBookData }: BookContentsProps): Reac
       if (prevPageData) {
         console.log(`prevBtnHandler res: ${JSON.stringify(prevPageData)}`);
         setCurPage(prevPageData);
+        setEndStoryFlag(false);
       }
     }
   };
@@ -44,6 +49,8 @@ export default function BookContents({ storyBookData }: BookContentsProps): Reac
       setSelectFlag(true);
       console.log("yes select flag");
       console.log(`nextBtnHandler res: ${JSON.stringify(nextPageCase1)} ${JSON.stringify(nextPageCase2)}`);
+    } else if (curPage.nextPage.length === 0) {
+      setEndStoryFlag(true);
     }
   };
 
@@ -76,14 +83,18 @@ export default function BookContents({ storyBookData }: BookContentsProps): Reac
     // basic storybook component
     return (
       <>
-        <BookBackground selectFlag={selectFlag} />
-        <BookPageComponent
-          curPage={curPage}
-          prevBtnHandler={prevBtnHandler}
-          nextBtnHandler={nextBtnHandler}
-          leftArrowFlag={leftArrowFlag}
-          rightArrowFlag={rightArrowFlag}
-        />
+        {endStoryFlag && <EndPopupComponent />}
+        <div className={`w-full h-full ${darknessClass}`}>
+          <BookBackground selectFlag={selectFlag} />
+          <BookPageComponent
+            curPage={curPage}
+            prevBtnHandler={prevBtnHandler}
+            nextBtnHandler={nextBtnHandler}
+            leftArrowFlag={leftArrowFlag}
+            rightArrowFlag={rightArrowFlag}
+            endStoryFlag={endStoryFlag}
+          />
+        </div>
       </>
     );
   }

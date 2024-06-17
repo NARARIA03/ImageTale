@@ -8,6 +8,7 @@ interface BookPageProps {
   nextBtnHandler: () => void;
   leftArrowFlag: boolean;
   rightArrowFlag: boolean;
+  endStoryFlag: boolean;
 }
 
 export default function BookPageComponent({
@@ -16,6 +17,7 @@ export default function BookPageComponent({
   nextBtnHandler,
   leftArrowFlag,
   rightArrowFlag,
+  endStoryFlag,
 }: BookPageProps): React.JSX.Element {
   const [disableTalkingHeadFlag, setDisableTalkingHeadFlag] = useState<boolean>(false);
   const [hideTalkingHeadFlag, setHideTalkingHeadFlag] = useState<boolean>(false);
@@ -51,8 +53,8 @@ export default function BookPageComponent({
         {/* prev btn */}
         <button
           onClick={prevBtnHandler}
-          disabled={!leftArrowFlag}
-          className="mr-4 px-4 py-2 opacity-80 disabled:opacity-50 hover:scale-110 transition"
+          disabled={!leftArrowFlag || endStoryFlag}
+          className="mr-4 px-4 py-2 opacity-80 disabled:opacity-0 hover:scale-110 transition"
         >
           <img src="/img/right-arrow.png" alt="previous page button" className="w-20 h-14 rotate-180" />
         </button>
@@ -67,8 +69,8 @@ export default function BookPageComponent({
         {/* next btn */}
         <button
           onClick={nextBtnHandler}
-          disabled={!rightArrowFlag}
-          className="ml-4 px-4 py-2 opacity-80 disabled:opacity-50 hover:scale-110 transition"
+          disabled={!rightArrowFlag && endStoryFlag}
+          className="ml-4 px-4 py-2 opacity-80 disabled:opacity-0 hover:scale-110 transition"
         >
           <img src="/img/right-arrow.png" alt="next page button" className="w-20 h-14" />
         </button>
