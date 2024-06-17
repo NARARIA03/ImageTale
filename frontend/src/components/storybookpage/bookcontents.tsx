@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { StoryBook, StoryBookData } from "../../types/storybooktypes";
 import SelectPageComponent from "./selectpagecomp";
 import BookPageComponent from "./bookpagecomp";
+import BookBackground from "./bookbackground";
 
 interface BookContentsProps {
   storyBookData: StoryBook;
@@ -65,17 +66,25 @@ export default function BookContents({ storyBookData }: BookContentsProps): Reac
 
   // selecting component
   if (selectFlag && selectPage) {
-    return <SelectPageComponent selectPage={selectPage} setCurPage={setCurPage} setSelectFlag={setSelectFlag} />;
+    return (
+      <div>
+        <BookBackground selectFlag={selectFlag} />
+        <SelectPageComponent selectPage={selectPage} setCurPage={setCurPage} setSelectFlag={setSelectFlag} />
+      </div>
+    );
   } else {
     // basic storybook component
     return (
-      <BookPageComponent
-        curPage={curPage}
-        prevBtnHandler={prevBtnHandler}
-        nextBtnHandler={nextBtnHandler}
-        leftArrowFlag={leftArrowFlag}
-        rightArrowFlag={rightArrowFlag}
-      />
+      <>
+        <BookBackground selectFlag={selectFlag} />
+        <BookPageComponent
+          curPage={curPage}
+          prevBtnHandler={prevBtnHandler}
+          nextBtnHandler={nextBtnHandler}
+          leftArrowFlag={leftArrowFlag}
+          rightArrowFlag={rightArrowFlag}
+        />
+      </>
     );
   }
 }

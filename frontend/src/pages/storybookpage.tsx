@@ -33,7 +33,6 @@ export default function StoryBookPage(): React.JSX.Element {
 
   return (
     <div className="w-screen h-screen">
-      <BookBackground />
       <BookContents storyBookData={storyBookData} />
     </div>
   );
