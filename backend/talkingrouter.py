@@ -9,10 +9,7 @@ from dotenv import load_dotenv
 import os
 from model import QueryType
 
-# .env 파일 로드
 load_dotenv()
-
-# 환경 변수로부터 API 키를 가져옵니다.
 API_KEY = os.getenv("OPENAI_API_KEY")
 
 talking_router = APIRouter()
