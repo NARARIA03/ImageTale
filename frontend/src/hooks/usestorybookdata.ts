@@ -15,7 +15,7 @@ export function useStoryBookData(storyBookId: string | undefined): useStoryBookD
     setIsLoading(true);
     if (storyBookId) {
       axios
-        .get<StoryBook>(`http://0.0.0.0:8080/storybook/${storyBookId}`)
+        .get<StoryBook>(`${import.meta.env.VITE_APP_API_URL}/storybook/${storyBookId}`)
         .then((res) => {
           console.log(`fetch complete storybook ${storyBookId}`);
           setStoryBookData(res.data);

@@ -13,9 +13,7 @@ app.include_router(talkingrouter.talking_router)
 
 
 # CORS 설정 추가
-origins = [
-    "http://localhost:5173",
-]
+origins = ["http://localhost:5173", "http://211.215.13.73:7000"]
 
 app.add_middleware(
     CORSMiddleware,

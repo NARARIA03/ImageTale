@@ -1,7 +1,11 @@
 from fastapi import APIRouter
 import asyncio
+from dotenv import load_dotenv
+import os
 
 db = []
+load_dotenv()
+API_URL = os.getenv("API_URL")
 
 # 목업 데이터, openAI API로 생성하고, json으로 정리를 마친 데이터
 # 동화 스토리와, 뼈대 (선택지 트리구조)가 잡혀있는 형태의 데이터
@@ -157,10 +161,10 @@ async def get_storybook(storybookId: int) -> dict:
             return_storybook = item
             for page in return_storybook["data"]:
                 page["image"] = (
-                    f"http://0.0.0.0:8080/storybookimage/{return_storybook['id']}/{page['page']}"
+                    f"{API_URL}/storybookimage/{return_storybook['id']}/{page['page']}"
                 )
                 page["talkinghead"] = (
-                    f"http://0.0.0.0:8080/talkinghead/{return_storybook['id']}/{page['page']}"
+                    f"{API_URL}/talkinghead/{return_storybook['id']}/{page['page']}"
                 )
             await asyncio.sleep(1)  # 2초 지연, 실제 배포 시는 제거
             return return_storybook
