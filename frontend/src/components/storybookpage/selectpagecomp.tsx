@@ -7,7 +7,11 @@ interface SelectPageProps {
   setSelectFlag: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function SelectPageComponent({ selectPage, setCurPage, setSelectFlag }: SelectPageProps): React.JSX.Element {
+export default function SelectPageComponent({
+  selectPage,
+  setCurPage,
+  setSelectFlag,
+}: SelectPageProps): React.JSX.Element {
   const selectPageHandler = (selectedPage: StoryBookData | undefined) => {
     if (selectedPage) {
       setCurPage(selectedPage);
