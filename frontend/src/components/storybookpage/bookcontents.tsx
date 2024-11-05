@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StoryBook, StoryBookData } from "../../types/storybooktypes";
 import SelectPageComponent from "./selectpagecomp";
 import BookPageComponent from "./bookpagecomp";
@@ -19,38 +19,23 @@ export default function BookContents({
 
   const darknessClass = endStoryFlag ? "brightness-50" : "";
 
-  const onFlip = (index: number) => {
-    console.log(`onFlipHandler index: ${index}`);
-    const newCurPage = storyBookData.data.find((page) => page.page === index);
-
-    if (newCurPage && newCurPage.page > curPage.page) {
-      nextBtnHandler(curPage);
-    } else if (newCurPage && newCurPage.page < curPage.page) {
-      prevBtnHandler(curPage);
-    }
-  };
-
-  const prevBtnHandler = (newCurPage: StoryBookData) => {
-    if (newCurPage.page >= 1) {
+  const prevBtnHandler = () => {
+    if (curPage.page > 1) {
       const prevPageData = storyBookData.data.find(
         (page) => page.page === curPage.prevPage
       );
       if (prevPageData) {
-        console.log(`prevBtnHandler res: ${JSON.stringify(prevPageData)}`);
         setCurPage(prevPageData);
         setEndStoryFlag(false);
       }
     }
   };
 
-  const nextBtnHandler = (curPage: StoryBookData) => {
+  const nextBtnHandler = () => {
     if (curPage.nextPage.length === 1) {
       const nextPageData = storyBookData.data.find(
         (page) => curPage.nextPage[0] === page.page
       );
-      setSelectFlag(false);
-      console.log("no select flag");
-      console.log(`nextBtnHandler res: ${JSON.stringify(nextPageData)}`);
       if (nextPageData) {
         setSelectFlag(false);
         setCurPage(nextPageData);
@@ -65,20 +50,10 @@ export default function BookContents({
       const pageList = [nextPageCase1, nextPageCase2];
       setSelectPage(pageList);
       setSelectFlag(true);
-      console.log("yes select flag");
-      console.log(
-        `nextBtnHandler res: ${JSON.stringify(nextPageCase1)} ${JSON.stringify(
-          nextPageCase2
-        )}`
-      );
     } else if (curPage.nextPage.length === 0) {
       setEndStoryFlag(true);
     }
   };
-
-  useEffect(() => {
-    console.log(`curPage: ${JSON.stringify(curPage)}`);
-  }, [curPage]);
 
   if (selectFlag && selectPage) {
     return (
@@ -99,7 +74,8 @@ export default function BookContents({
       <div className={`w-full h-full ${darknessClass}`}>
         <BookPageComponent
           curPage={curPage}
-          onFlip={onFlip}
+          prevBtnHandler={prevBtnHandler}
+          nextBtnHandler={nextBtnHandler}
           storyBooks={storyBookData.data}
         />
       </div>
