@@ -56,7 +56,7 @@ export default function BookContents({
 
   return (
     <>
-      {endStoryFlag && <EndPopupComponent />}
+      {endStoryFlag && <EndPopupComponent storyBookId={storyBookData.id} />}
       {selectFlag && selectPage && (
         <div>
           <SelectPageComponent

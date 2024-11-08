@@ -1,11 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function EndPopupComponent(): React.JSX.Element {
+interface Props {
+  storyBookId: number;
+}
+
+export default function EndPopupComponent({
+  storyBookId,
+}: Props): React.JSX.Element {
   const navigate = useNavigate();
 
   const handleYesBtn = () => {
-    navigate("/talking/2");
+    if (storyBookId) navigate(`/talking/${storyBookId}`);
   };
 
   const handleNoBtn = () => {
