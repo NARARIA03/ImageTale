@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { StoryBook, StoryBookData } from "../../types/storybooktypes";
-import SelectPageComponent from "./selectpagecomp";
-import BookPageComponent from "./bookpagecomp";
-import EndPopupComponent from "./endpopupcomp";
+import FlipBook from "./FlipBook";
+import SelectPage from "./SelectPage";
+import EndPopup from "./EndPopup";
 
-interface BookContentsProps {
+interface Props {
   storyBookData: StoryBook;
 }
 
-export default function BookContents({
-  storyBookData,
-}: BookContentsProps): React.JSX.Element {
+export default function RenderStoryBook({ storyBookData }: Props): JSX.Element {
   const [curPage, setCurPage] = useState<StoryBookData>(storyBookData.data[0]);
   const [selectPage, setSelectPage] = useState<(StoryBookData | undefined)[]>();
   const [selectFlag, setSelectFlag] = useState<boolean>(false);
   const [endStoryFlag, setEndStoryFlag] = useState<boolean>(false);
-
-  const darknessClass = endStoryFlag ? "brightness-50" : "";
 
   const prevBtnHandler = () => {
     if (curPage.page > 1) {
@@ -56,24 +52,21 @@ export default function BookContents({
 
   return (
     <>
-      {endStoryFlag && <EndPopupComponent storyBookId={storyBookData.id} />}
+      {endStoryFlag && <EndPopup storyBookId={storyBookData.id} />}
       {selectFlag && selectPage && (
-        <div>
-          <SelectPageComponent
-            selectPage={selectPage}
-            setCurPage={setCurPage}
-            setSelectFlag={setSelectFlag}
-          />
-        </div>
-      )}
-      <div className={`w-full h-full ${darknessClass}`}>
-        <BookPageComponent
-          curPage={curPage}
-          prevBtnHandler={prevBtnHandler}
-          nextBtnHandler={nextBtnHandler}
-          storyBooks={storyBookData.data}
+        <SelectPage
+          selectPage={selectPage}
+          setCurPage={setCurPage}
+          setSelectFlag={setSelectFlag}
         />
-      </div>
+      )}
+      <FlipBook
+        curPage={curPage}
+        prevBtnHandler={prevBtnHandler}
+        nextBtnHandler={nextBtnHandler}
+        storyBooks={storyBookData.data}
+        isDarkness={endStoryFlag}
+      />
     </>
   );
 }

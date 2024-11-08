@@ -1,7 +1,7 @@
 import React, { LegacyRef, useEffect, useRef, useState } from "react";
 import { StoryBookData } from "../../types/storybooktypes";
-import BookPageTopNav from "./bookpagetopnav";
-import HTMLFlipBook from "react-pageflip";
+import StoryBookHeader from "./StoryBookHeader";
+import * as S from "../../styles/components/storybookpage/FlipBook.style";
 
 const Image = React.forwardRef(
   (
@@ -10,18 +10,9 @@ const Image = React.forwardRef(
   ) => {
     return (
       <div ref={ref} data-density="hard">
-        <div
-          onClick={props.onClick}
-          className="w-full h-full flex justify-center items-center p-8"
-          style={{
-            backgroundImage: "url('/img/paper.jpg')",
-            backgroundSize: "cover",
-          }}
-        >
-          <div className="rounded-2xl shadow-lg overflow-hidden">
-            <img src={props.image} alt="storybook" />
-          </div>
-        </div>
+        <S.ImageBox onClick={props.onClick}>
+          <img src={props.image} alt="storybook" />
+        </S.ImageBox>
       </div>
     );
   }
@@ -34,39 +25,30 @@ const Text = React.forwardRef(
   ) => {
     return (
       <div ref={ref} data-density="hard">
-        <div
-          onClick={props.onClick}
-          className="w-full h-full p-8 flex justify-center items-center"
-          style={{
-            backgroundImage: "url('/img/paper.jpg')",
-            backgroundSize: "cover",
-          }}
-        >
-          <div>
-            <p className="text-xl">{props.text}</p>
-          </div>
-          <p className="text-sm absolute bottom-5 left-5">
-            {props.page}(debug)
-          </p>
-        </div>
+        <S.TextBox onClick={props.onClick}>
+          <p>{props.text}</p>
+          <p>{props.page}(debug)</p>
+        </S.TextBox>
       </div>
     );
   }
 );
 
-interface BookPageProps {
+interface Props {
   curPage: StoryBookData;
   prevBtnHandler: () => void;
   nextBtnHandler: () => void;
   storyBooks: StoryBookData[];
+  isDarkness: boolean;
 }
 
-function BookPageComponent({
+export default function FlipBook({
   curPage,
   prevBtnHandler,
   nextBtnHandler,
   storyBooks,
-}: BookPageProps): JSX.Element {
+  isDarkness,
+}: Props): JSX.Element {
   const [disableTalkingHeadFlag, setDisableTalkingHeadFlag] =
     useState<boolean>(false);
   const [hideTalkingHeadFlag, setHideTalkingHeadFlag] =
@@ -97,29 +79,21 @@ function BookPageComponent({
   }, [bookChange]);
 
   return (
-    <div className="w-full h-full relative px-14 pt-7 pb-[2rem] flex flex-col justify-center items-center">
-      {!disableTalkingHeadFlag && (
-        <div
-          className={`z-40 absolute lg:w-64 lg:h-64 lg:bottom-5 lg:right-5 md:w-44 md:h-44 md:bottom-10 md:right-10 sm:w-24 sm:h-24 sm:bottom-24 sm:right-24 w-14 h-14 bottom-24 right-16 rounded-full overflow-hidden ${
-            hideTalkingHeadFlag ? "" : "shadow-2xl"
-          }`}
-        >
-          <video
-            src={curPage.talkinghead}
-            autoPlay
-            className={hideTalkingHeadFlag ? "opacity-0" : ""}
-          />
-        </div>
-      )}
+    <S.FlipBookLayout $isDarkness={isDarkness}>
+      <S.TalkingheadBox $flag={hideTalkingHeadFlag || disableTalkingHeadFlag}>
+        {!disableTalkingHeadFlag && (
+          <video src={curPage.talkinghead} autoPlay />
+        )}
+      </S.TalkingheadBox>
 
-      <BookPageTopNav
+      <StoryBookHeader
         toggleHideTalkingHead={toggleHideTalkingHead}
         toggleDisableTalkingHead={toggleDisableTalkingHead}
         hideTalkingHeadFlag={hideTalkingHeadFlag}
         disableTalkingHeadFlag={disableTalkingHeadFlag}
       />
 
-      <HTMLFlipBook
+      <S.HtmlFlipBook
         width={500}
         height={600}
         showCover={false}
@@ -143,7 +117,6 @@ function BookPageComponent({
           const pages = [];
           for (let i = 0; i < storyBooks.length; i += 1) {
             const storyBook = storyBooks[i];
-
             pages.push(
               <Image
                 onClick={() => {
@@ -170,9 +143,7 @@ function BookPageComponent({
           }
           return pages;
         })()}
-      </HTMLFlipBook>
-    </div>
+      </S.HtmlFlipBook>
+    </S.FlipBookLayout>
   );
 }
-
-export default BookPageComponent;

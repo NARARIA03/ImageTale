@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import img1 from "../../img/img1.jpg";
-import img2 from "../../img/img2.jpg";
-import img3 from "../../img/img3.jpg";
-import img4 from "../../img/img4.jpg";
-import img5 from "../../img/img5.jpg";
-import img6 from "../../img/img6.jpg";
+import * as S from "../styles/components/PreviewImg.style";
+
+import img1 from "../img/img1.jpg";
+import img2 from "../img/img2.jpg";
+import img3 from "../img/img3.jpg";
+import img4 from "../img/img4.jpg";
+import img5 from "../img/img5.jpg";
+import img6 from "../img/img6.jpg";
 
 const images = [img1, img2, img3, img4, img5, img6];
 
@@ -32,19 +34,12 @@ export default function PreviewImg(): JSX.Element {
   }, []);
 
   return (
-    <div className="w-full overflow-hidden">
-      <div
-        className="flex whitespace-nowrap transition-transform duration-500"
-        style={{ transform: `translateX(-${transformValue}%)` }}
-      >
+    <S.PreviewBox>
+      <S.MoveImageBox $transformValue={transformValue}>
         {currentImages.map((img, index) => (
-          <img
-            key={index}
-            src={img}
-            className="w-64 m-12 rounded-[35px] shadow-2xl shadow-stone-600"
-          />
+          <img key={index} src={img} />
         ))}
-      </div>
-    </div>
+      </S.MoveImageBox>
+    </S.PreviewBox>
   );
 }

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { IoSend } from "react-icons/io5";
 import axios from "axios";
+import * as S from "../styles/pages/TalkingPage.style";
 
 interface Request {
   query: string;
@@ -16,9 +18,7 @@ interface Props {
   bookPageList: number[];
 }
 
-export default function TalkingPage({
-  bookPageList,
-}: Props): React.JSX.Element {
+export default function TalkingPage({ bookPageList }: Props): JSX.Element {
   const { storyBookId } = useParams();
   const [inputValue, setInputValue] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
@@ -52,10 +52,11 @@ export default function TalkingPage({
   };
 
   return (
-    <div className="w-screen h-screen relative">
-      <div className="w-full flex flex-col justify-start items-start absolute top-0 p-4 space-y-2">
+    <S.TalkingPageLayout className="w-screen h-screen relative">
+      <S.MessageBox className="w-full flex flex-col justify-start items-start absolute top-0 p-4 space-y-2">
         {messages.map((message, index) => (
-          <div
+          <S.Message
+            $type={message.type}
             key={index}
             className={`p-2 rounded-md ${
               message.type === "user"
@@ -64,26 +65,21 @@ export default function TalkingPage({
             }`}
           >
             {message.text}
-          </div>
+          </S.Message>
         ))}
-      </div>
-      <div className="w-full flex justify-center items-center absolute bottom-0">
+      </S.MessageBox>
+
+      <S.InputBox $inputValue={inputValue}>
         <input
           type="text"
           placeholder="동화 내용에 관한 질문을 작성해주세요"
-          className="w-full border border-custom-black p-4 m-4 rounded-full"
           value={inputValue}
           onChange={handleInput}
         />
-        {inputValue && (
-          <button
-            className="absolute right-1 p-3 m-6 bg-red-400 rounded-full"
-            onClick={handleSubmit}
-          >
-            전송
-          </button>
-        )}
-      </div>
-    </div>
+        <button onClick={handleSubmit}>
+          <IoSend size={24} />
+        </button>
+      </S.InputBox>
+    </S.TalkingPageLayout>
   );
 }

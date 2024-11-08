@@ -1,11 +1,10 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import MainPage from "../pages/mainpage";
-import StoryBookPage from "../pages/storybookpage";
-import TalkingPage from "../pages/talkingpage";
+import MainPage from "../pages/MainPage";
+import StoryBookPage from "../pages/StoryBookPage";
+import TalkingPage from "../pages/TalkingPage";
 
-export default function Router(): React.JSX.Element {
+export default function Router(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
