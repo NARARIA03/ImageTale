@@ -12,13 +12,15 @@ const Image = React.forwardRef(
       <div ref={ref} data-density="hard">
         <div
           onClick={props.onClick}
-          className="w-full h-full p-8"
+          className="w-full h-full flex justify-center items-center p-8"
           style={{
             backgroundImage: "url('/img/paper.jpg')",
             backgroundSize: "cover",
           }}
         >
-          <img src={props.image} alt="storybook" />
+          <div className="rounded-2xl shadow-lg overflow-hidden">
+            <img src={props.image} alt="storybook" />
+          </div>
         </div>
       </div>
     );
@@ -34,14 +36,18 @@ const Text = React.forwardRef(
       <div ref={ref} data-density="hard">
         <div
           onClick={props.onClick}
-          className="w-full h-full"
+          className="w-full h-full p-8 flex justify-center items-center"
           style={{
             backgroundImage: "url('/img/paper.jpg')",
             backgroundSize: "cover",
           }}
         >
-          <p>{props.page}</p>
-          <p>{props.text}</p>
+          <div>
+            <p className="text-xl">{props.text}</p>
+          </div>
+          <p className="text-sm absolute bottom-5 left-5">
+            {props.page}(debug)
+          </p>
         </div>
       </div>
     );
@@ -94,7 +100,7 @@ function BookPageComponent({
     <div className="w-full h-full relative px-14 pt-7 pb-[2rem] flex flex-col justify-center items-center">
       {!disableTalkingHeadFlag && (
         <div
-          className={`absolute lg:w-64 lg:h-64 lg:top-5 lg:left-5 md:w-44 md:h-44 md:top-10 md:left-10 sm:w-24 sm:h-24 sm:top-24 sm:left-24 w-14 h-14 top-24 left-16 rounded-full overflow-hidden ${
+          className={`z-40 absolute lg:w-64 lg:h-64 lg:bottom-5 lg:right-5 md:w-44 md:h-44 md:bottom-10 md:right-10 sm:w-24 sm:h-24 sm:bottom-24 sm:right-24 w-14 h-14 bottom-24 right-16 rounded-full overflow-hidden ${
             hideTalkingHeadFlag ? "" : "shadow-2xl"
           }`}
         >
@@ -114,10 +120,11 @@ function BookPageComponent({
       />
 
       <HTMLFlipBook
-        width={400}
-        height={400}
+        width={500}
+        height={600}
         showCover={false}
         showPageCorners={false}
+        usePortrait={false}
         startZIndex={30}
         useMouseEvents={false} // 기본 클릭 이벤트 비활성화
         disableFlipByClick={true} // 클릭하면 플립 이벤트 발생하던거 비활성화
@@ -130,6 +137,7 @@ function BookPageComponent({
           // 아마 curPage 상태 변경 -> useEffect 실행 onFlip 이벤트 핸들러가 받고 이상한 동작으로 판단하고 원래대로 돌리는? 건지..
         }}
         onChangeState={(e) => setBookChange(e.data)}
+        className="shadow-xl"
       >
         {(() => {
           const pages = [];

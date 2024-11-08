@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { StoryBook, StoryBookData } from "../../types/storybooktypes";
 import SelectPageComponent from "./selectpagecomp";
 import BookPageComponent from "./bookpagecomp";
-import BookBackground from "./bookbackground";
 import EndPopupComponent from "./endpopupcomp";
 
 interface BookContentsProps {
@@ -55,22 +54,18 @@ export default function BookContents({
     }
   };
 
-  if (selectFlag && selectPage) {
-    return (
-      <div>
-        <BookBackground selectFlag={selectFlag} />
-        <SelectPageComponent
-          selectPage={selectPage}
-          setCurPage={setCurPage}
-          setSelectFlag={setSelectFlag}
-        />
-      </div>
-    );
-  }
-
   return (
     <>
       {endStoryFlag && <EndPopupComponent />}
+      {selectFlag && selectPage && (
+        <div>
+          <SelectPageComponent
+            selectPage={selectPage}
+            setCurPage={setCurPage}
+            setSelectFlag={setSelectFlag}
+          />
+        </div>
+      )}
       <div className={`w-full h-full ${darknessClass}`}>
         <BookPageComponent
           curPage={curPage}
