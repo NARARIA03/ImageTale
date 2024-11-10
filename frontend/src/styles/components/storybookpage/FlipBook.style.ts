@@ -10,7 +10,10 @@ export const FlipBookLayout = styled.div<{ $isDarkness: boolean }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  filter: brightness(${(props) => (props.$isDarkness ? 0.5 : 1)});
+  filter: brightness(${(props) => (props.$isDarkness ? 0.3 : 1)});
+  background-image: linear-gradient(rgba(0, 0, 0, 0.227), rgba(0, 0, 0, 0.2)),
+    url("/img/background.png");
+  background-size: cover;
 `;
 
 export const TalkingheadBox = styled.div<{ $flag: boolean }>`
