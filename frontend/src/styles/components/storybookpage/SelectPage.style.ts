@@ -42,6 +42,7 @@ export const ImageBox = styled.div`
 export const TextBox = styled.div`
   width: 91.666667%;
   margin: 40px auto 0px auto;
+  padding: 12px;
   height: 208px;
   background-color: ${({ theme }) => theme.pink};
   display: flex;

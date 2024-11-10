@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from storybook import storybook_router
+from storybookrouter import storybook_router
 from videosrouter import videos_router
 from imagesrouter import images_router
 from talkingrouter import talking_router
