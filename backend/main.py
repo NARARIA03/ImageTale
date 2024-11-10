@@ -3,13 +3,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from storybook import storybook_router
 from videosrouter import videos_router
 from imagesrouter import images_router
-import talkingrouter
+from talkingrouter import talking_router
+from mystoryrouter import mystory_router
 
 app = FastAPI()
 app.include_router(storybook_router)
 app.include_router(videos_router)
 app.include_router(images_router)
-app.include_router(talkingrouter.talking_router)
+app.include_router(talking_router)
+app.include_router(mystory_router)
 
 
 # CORS 설정 추가

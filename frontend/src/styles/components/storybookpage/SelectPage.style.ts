@@ -22,17 +22,20 @@ export const PageBox = styled.div`
 `;
 
 export const ImageBox = styled.div`
-  width: 100%;
+  margin: 0px auto;
+  width: 351px;
+  overflow: hidden;
+  border-radius: 16px;
   display: flex;
   justify-content: center;
   align-items: end;
+  box-shadow: 0 10px 15px rgba(72, 72, 72, 0.4);
   filter: brightness(0.75);
 
   & > img {
-    max-width: 512px;
-    border-radius: 16px;
-    box-shadow: 0 10px 15px rgba(72, 72, 72, 0.4);
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 

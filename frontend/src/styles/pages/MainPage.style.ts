@@ -7,25 +7,6 @@ export const MainPageLayout = styled.div`
   background: ${(props) => props.theme.white};
 `;
 
-export const NavbarBox = styled.nav`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-
-  h1 {
-    font-size: 30px;
-    line-height: 36px;
-  }
-
-  div {
-    display: flex;
-    flex-direction: row;
-    color: ${(props) => props.theme.black};
-  }
-`;
-
 export const GuideBtn = styled(Link)`
   display: block;
   padding: 8px;

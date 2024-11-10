@@ -1,21 +1,35 @@
 import { Dispatch, SetStateAction } from "react";
-import { StoryBookData } from "../../types/storybooktypes";
+import { StoryBookData } from "../../types/storyBookTypes";
+import { MyStoryBook } from "../../types/myStoryBookTypes";
 import * as S from "../../styles/components/storybookpage/SelectPage.style";
 
 interface Props {
   selectPage: (StoryBookData | undefined)[];
   setCurPage: Dispatch<SetStateAction<StoryBookData>>;
   setSelectFlag: Dispatch<SetStateAction<boolean>>;
+  setMyStoryBook: Dispatch<SetStateAction<MyStoryBook>>;
 }
 
 export default function SelectPage({
   selectPage,
   setCurPage,
   setSelectFlag,
+  setMyStoryBook,
 }: Props): JSX.Element {
   const selectPageHandler = (selectedPage: StoryBookData | undefined) => {
     if (selectedPage) {
       setCurPage(selectedPage);
+      setMyStoryBook((prev) => ({
+        ...prev,
+        data: [
+          ...prev.data,
+          {
+            content: selectedPage.content,
+            image: selectedPage.image,
+            talkinghead: selectedPage.talkinghead,
+          },
+        ],
+      }));
       setSelectFlag(false);
     }
   };

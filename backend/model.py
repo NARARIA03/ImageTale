@@ -21,3 +21,17 @@ class StoryBook(BaseModel):
 class QueryType(BaseModel):
     query: str
     pageList: List[int]
+
+
+class MyStoryBookData(BaseModel):
+    content: str
+    image: str
+    talkinghead: str
+
+
+class MyStoryBook(BaseModel):
+    id: int
+    title: str
+    introduction: str
+    thumbnail: str
+    data: List[MyStoryBookData]

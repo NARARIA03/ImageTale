@@ -1,5 +1,5 @@
 import React, { LegacyRef, useEffect, useRef, useState } from "react";
-import { StoryBookData } from "../../types/storybooktypes";
+import { StoryBookData } from "../../types/storyBookTypes";
 import StoryBookHeader from "./StoryBookHeader";
 import * as S from "../../styles/components/storybookpage/FlipBook.style";
 
@@ -67,16 +67,11 @@ export default function FlipBook({
 
   useEffect(() => {
     if (bookRef?.current?.pageFlip()?.flip) {
-      console.log(`curPage: ${curPage.page}`);
       if (bookChange !== "flipping") {
         bookRef.current.pageFlip().flip(curPage.page * 2 - 2);
       }
     }
   }, [bookChange, curPage]);
-
-  useEffect(() => {
-    console.log(`state: ${bookChange}`);
-  }, [bookChange]);
 
   return (
     <S.FlipBookLayout $isDarkness={isDarkness}>
@@ -100,15 +95,12 @@ export default function FlipBook({
         showPageCorners={false}
         usePortrait={false}
         startZIndex={30}
-        useMouseEvents={false} // 기본 클릭 이벤트 비활성화
-        disableFlipByClick={true} // 클릭하면 플립 이벤트 발생하던거 비활성화
-        startPage={curPage.page * 2 - 2} // 시작 페이지: 트리구조 인덱스에 맞게 조절
+        useMouseEvents={false}
+        disableFlipByClick={true}
+        startPage={curPage.page * 2 - 2}
         ref={bookRef}
         onFlip={() => {
-          console.log(`flip: ${curPage.page * 2 - 2}`);
           bookRef?.current?.pageFlip()?.flip(curPage.page * 2 - 2);
-          // 여기서 안 해주면 12 -> 14 페이지를 가야 할 때, 12 -> 14 -> 13과 같은 부작용이 발생함
-          // 아마 curPage 상태 변경 -> useEffect 실행 onFlip 이벤트 핸들러가 받고 이상한 동작으로 판단하고 원래대로 돌리는? 건지..
         }}
         onChangeState={(e) => setBookChange(e.data)}
         className="shadow-xl"

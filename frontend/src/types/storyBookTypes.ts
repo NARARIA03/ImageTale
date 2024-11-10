@@ -11,5 +11,6 @@ export interface StoryBookData {
 export interface StoryBook {
   id: number;
   title: string;
+  introduction: string;
   data: StoryBookData[];
 }
