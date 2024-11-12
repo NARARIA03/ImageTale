@@ -20,7 +20,7 @@ class StoryBook(BaseModel):
 
 class QueryType(BaseModel):
     query: str
-    pageList: List[int]
+    story: str
 
 
 class MyStoryBookData(BaseModel):

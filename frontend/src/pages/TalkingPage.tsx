@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { IoSend } from "react-icons/io5";
 import axios from "axios";
 import * as S from "../styles/pages/TalkingPage.style";
 
 interface Request {
   query: string;
-  pageList: number[];
+  story: string;
 }
 
 interface Message {
@@ -14,12 +14,10 @@ interface Message {
   text: string;
 }
 
-interface Props {
-  bookPageList: number[];
-}
+export default function TalkingPage(): JSX.Element {
+  const location = useLocation();
+  const { myStoryBook } = location.state || {};
 
-export default function TalkingPage({ bookPageList }: Props): JSX.Element {
-  const { storyBookId } = useParams();
   const [inputValue, setInputValue] = useState<string>("");
   const [messages, setMessages] = useState<Message[]>([]);
 
@@ -28,20 +26,23 @@ export default function TalkingPage({ bookPageList }: Props): JSX.Element {
   };
 
   const handleSubmit = () => {
-    if (!inputValue.trim()) {
+    if (!inputValue.trim() || !myStoryBook) {
       return;
     }
+    const story = myStoryBook.data.map((page) => page.content).join(". ");
+    console.log(story);
     const userMessage: Message = { type: "user", text: inputValue };
     setMessages((prev) => [...prev, userMessage]);
 
-    const req: Request = { query: inputValue, pageList: bookPageList };
+    const req: Request = { query: inputValue, story: story };
+    console.log(inputValue, story, userMessage);
     axios
-      .post(`${import.meta.env.VITE_APP_API_URL}/talking/${storyBookId}`, req)
+      .post(`${import.meta.env.VITE_APP_API_URL}/talking`, req)
       .then((res) => {
         console.log(res);
         const responseMessage: Message = {
           type: "response",
-          text: res.data,
+          text: res.data.answer,
         };
         setMessages((prev) => [...prev, responseMessage]);
       })

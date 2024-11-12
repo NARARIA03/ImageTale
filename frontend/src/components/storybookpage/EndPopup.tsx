@@ -27,7 +27,7 @@ export default function EndPopup({
 
   const handleYesBtn = async () => {
     await postMyStoryBook();
-    navigate(`/talking/${storyBookId}`);
+    navigate(`/talking/${storyBookId}`, { state: { myStoryBook } });
   };
 
   const handleNoBtn = async () => {
