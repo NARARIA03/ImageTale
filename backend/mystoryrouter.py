@@ -6,6 +6,7 @@ import asyncio
 mystory_router = APIRouter()
 
 mystory_inmemory_db = []
+inmenory_id = 0
 
 
 @mystory_router.get("/mystory")
@@ -21,6 +22,9 @@ async def get_mystory() -> dict:
 async def post_mystory(new_story: MyStoryBook) -> dict:
     try:
         if not check_duplicate_book_gen(mystory_inmemory_db, new_story):
+            global inmenory_id
+            new_story.id = inmenory_id
+            inmenory_id += 1
             mystory_inmemory_db.append(new_story)
             return {"msg": "success"}
         else:

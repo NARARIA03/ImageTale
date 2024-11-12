@@ -14,8 +14,6 @@ talking_router = APIRouter()
 async def talking(req: QueryType) -> dict:
     query = req.query
     story = req.story
-    print(query)
-    print(story)
 
     messages = [
         {

@@ -24,6 +24,7 @@ class QueryType(BaseModel):
 
 
 class MyStoryBookData(BaseModel):
+    page: int
     content: str
     image: str
     talkinghead: str

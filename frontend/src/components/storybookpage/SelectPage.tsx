@@ -24,6 +24,7 @@ export default function SelectPage({
         data: [
           ...prev.data,
           {
+            page: selectedPage.page,
             content: selectedPage.content,
             image: selectedPage.image,
             talkinghead: selectedPage.talkinghead,

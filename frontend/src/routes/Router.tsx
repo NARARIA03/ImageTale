@@ -4,6 +4,7 @@ import MainPage from "../pages/MainPage";
 import StoryBookPage from "../pages/StoryBookPage";
 import TalkingPage from "../pages/TalkingPage";
 import MyStoryPage from "../pages/MyStoryPage";
+import ReadPage from "../pages/ReadPage";
 
 export default function Router(): JSX.Element {
   return (
@@ -13,8 +14,8 @@ export default function Router(): JSX.Element {
         <Route path="/new-story" element={<></>} />
         <Route path="/new-story/:storyBookId" element={<StoryBookPage />} />
         <Route path="/my-story" element={<MyStoryPage />} />
-        <Route path="/my-story/:storyBookId" element={<></>} />
-        <Route path="/talking/:storyBookId" element={<TalkingPage />} />
+        <Route path="/my-story/read" element={<ReadPage />} />
+        <Route path="/talking" element={<TalkingPage />} />
         <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Routes>
     </BrowserRouter>

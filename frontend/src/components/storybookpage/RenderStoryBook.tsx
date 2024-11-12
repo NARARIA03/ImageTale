@@ -13,7 +13,14 @@ export default function RenderStoryBook({ storyBookData }: Props): JSX.Element {
   const [curPage, setCurPage] = useState<StoryBookData>(storyBookData.data[0]);
   const [myStoryBook, setMyStoryBook] = useState<MyStoryBook>({
     ...storyBookData,
-    data: [],
+    data: [
+      {
+        page: storyBookData.data[0].page,
+        content: storyBookData.data[0].content,
+        image: storyBookData.data[0].image,
+        talkinghead: storyBookData.data[0].talkinghead,
+      },
+    ],
     thumbnail: "",
   });
   const [selectPage, setSelectPage] = useState<(StoryBookData | undefined)[]>();
@@ -46,6 +53,7 @@ export default function RenderStoryBook({ storyBookData }: Props): JSX.Element {
           data: [
             ...prev.data,
             {
+              page: nextPageData.page,
               content: nextPageData.content,
               image: nextPageData.image,
               talkinghead: nextPageData.talkinghead,
@@ -74,9 +82,7 @@ export default function RenderStoryBook({ storyBookData }: Props): JSX.Element {
 
   return (
     <>
-      {endStoryFlag && (
-        <EndPopup storyBookId={storyBookData.id} myStoryBook={myStoryBook} />
-      )}
+      {endStoryFlag && <EndPopup myStoryBook={myStoryBook} />}
       {selectFlag && selectPage && (
         <SelectPage
           selectPage={selectPage}

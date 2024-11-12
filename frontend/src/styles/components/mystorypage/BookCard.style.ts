@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const BookCardLayout = styled.div`
+  cursor: pointer;
   box-shadow: 0 10px 15px rgba(72, 72, 72, 0.4);
   border-radius: 24px;
   position: relative;

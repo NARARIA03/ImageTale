@@ -4,14 +4,10 @@ import { MyStoryBook } from "../../types/myStoryBookTypes";
 import axios from "axios";
 
 interface Props {
-  storyBookId: number;
   myStoryBook: MyStoryBook;
 }
 
-export default function EndPopup({
-  storyBookId,
-  myStoryBook,
-}: Props): JSX.Element {
+export default function EndPopup({ myStoryBook }: Props): JSX.Element {
   const navigate = useNavigate();
 
   const postMyStoryBook = async () => {
@@ -27,7 +23,7 @@ export default function EndPopup({
 
   const handleYesBtn = async () => {
     await postMyStoryBook();
-    navigate(`/talking/${storyBookId}`, { state: { myStoryBook } });
+    navigate(`/talking`, { state: { myStoryBook } });
   };
 
   const handleNoBtn = async () => {
