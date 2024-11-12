@@ -8,16 +8,16 @@ export const NavbarBox = styled.nav`
   align-items: center;
   padding: 16px;
 
-  h1 {
-    font-size: 30px;
-    line-height: 36px;
-  }
-
   div {
     display: flex;
     flex-direction: row;
     color: ${(props) => props.theme.black};
   }
+`;
+
+export const LogoBox = styled.div`
+  width: 44px;
+  overflow: hidden;
 `;
 
 export { PrimaryBtn, SecondaryBtn, GuideBtn };

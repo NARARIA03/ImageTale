@@ -20,6 +20,7 @@ export const MoveImageBox = styled.div.attrs<{ $transformValue: number }>(
   img {
     width: 256px;
     margin: 48px;
+    margin-bottom: 24px;
     border-radius: 35px;
     box-shadow: 0 10px 15px rgba(72, 72, 72, 0.4);
   }

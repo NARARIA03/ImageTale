@@ -3,6 +3,8 @@ import PreviewImg from "../components/PreviewImg";
 import * as S from "../styles/pages/MainPage.style";
 
 export default function MainPage(): JSX.Element {
+  const storyIndex = Math.floor(Math.random() * 3) + 2;
+
   return (
     <S.MainPageLayout>
       <NavBar />
@@ -17,7 +19,9 @@ export default function MainPage(): JSX.Element {
         <h2>나만의 영어 동화책을 만들어보세요</h2>
         <p>새로운 이야기 생성뿐만 아니라 이야기에 맞는 이미지까지!</p>
         <div>
-          <S.PrimaryBtn to="/new-story/3">새로운 이야기 만들기</S.PrimaryBtn>
+          <S.PrimaryBtn to={`/new-story/${storyIndex}`}>
+            새로운 이야기 만들기
+          </S.PrimaryBtn>
           <S.SecondaryBtn to="/my-story">기존 이야기 선택하기</S.SecondaryBtn>
         </div>
       </S.GuideBox>

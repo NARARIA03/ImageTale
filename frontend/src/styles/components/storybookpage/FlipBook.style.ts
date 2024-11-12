@@ -17,32 +17,11 @@ export const FlipBookLayout = styled.div<{ $isDarkness: boolean }>`
 `;
 
 export const TalkingheadBox = styled.div<{ $flag: boolean }>`
-  @media (min-width: 1024px) {
-    width: 256px;
-    height: 256px;
-    bottom: 20px;
-    right: 20px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    width: 176px;
-    height: 176px;
-    bottom: 40px;
-    right: 40px;
-  }
-
-  @media (min-width: 640px) and (max-width: 767px) {
-    width: 96px;
-    height: 96px;
-    bottom: 96px;
-    right: 96px;
-  }
-
   position: absolute;
-  width: 56px;
-  height: 56px;
-  bottom: 96px;
-  right: 64px;
+  width: 256px;
+  height: 256px;
+  bottom: 70px;
+  right: 70px;
   border-radius: 9999px;
   overflow: hidden;
   z-index: 40;
