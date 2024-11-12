@@ -1,25 +1,28 @@
 import styled from "styled-components";
 
 export const TalkingPageLayout = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: relative;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
+    url("/img/background.png");
+  background-size: cover;
+  background-attachment: fixed;
 `;
 
 export const MessageBox = styled.div`
   width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  position: absolute;
-  top: 0px;
   padding: 16px;
+  padding-bottom: 72px;
 `;
 
 export const Message = styled.div<{ $type: "user" | "response" }>`
   padding: 8px;
-  margin: 8px;
+  margin-bottom: 16px;
+  max-width: 45%;
   border-radius: 6px;
   font-size: 20px;
   background: ${(props) =>
@@ -31,9 +34,11 @@ export const Message = styled.div<{ $type: "user" | "response" }>`
 export const InputBox = styled.div<{ $inputValue: string }>`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px;
   align-items: center;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
 
   & > input {
@@ -44,20 +49,22 @@ export const InputBox = styled.div<{ $inputValue: string }>`
     outline: none;
     border-radius: 9999px;
     padding: 16px;
-    margin: 16px;
   }
 
   & > button {
-    visibility: ${(props) => (props.$inputValue ? "visible" : "hidden")};
-    position: absolute;
-    display: flex;
+    display: ${(props) => (props.$inputValue ? "flex" : "none")};
+
     justify-content: center;
     align-items: center;
     font-family: "CookieRun";
-    right: -6px;
-    padding: 12px;
-    margin: 24px;
+    width: 56px;
+    padding: 14px;
     background-color: ${({ theme }) => theme.pink};
     border-radius: 9999px;
+  }
+
+  & > button > svg {
+    width: 100%;
+    height: 100%;
   }
 `;
