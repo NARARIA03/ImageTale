@@ -5,7 +5,7 @@ export default function Loading(): JSX.Element {
     <S.LoadingLayout>
       <div>
         <S.Spinner />
-        <p>Generating storybook...</p>
+        <p>Loading...</p>
       </div>
     </S.LoadingLayout>
   );

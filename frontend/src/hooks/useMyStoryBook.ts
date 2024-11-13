@@ -3,13 +3,13 @@ import { MyStoryBook } from "../types/myStoryBookTypes";
 import axios from "axios";
 
 interface Result {
-  myStoryBooks: MyStoryBook[];
+  myStoryBooks: MyStoryBook[] | null;
   isLoading: boolean;
 }
 
 export const useMyStory = (): Result => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [myStoryBooks, setMyStoryBooks] = useState<MyStoryBook[]>([]);
+  const [myStoryBooks, setMyStoryBooks] = useState<MyStoryBook[] | null>(null);
 
   useEffect(() => {
     const fetch = async () => {

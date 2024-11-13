@@ -12,6 +12,7 @@ const theme: DefaultTheme = {
   blue: "#40A3FF",
   deepblue: "#2C73FF",
   grey: "#D9D9D9",
+  lightgrey: "#C0C0C0",
   deepgray: "#A9A9A9",
   pink: "#FFD6D6",
   deepyellow: "#FFF500",

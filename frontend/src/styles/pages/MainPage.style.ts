@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const MainPageLayout = styled.div`
   width: 100%;
   min-height: 100vh;
-  background: ${(props) => props.theme.white};
 `;
 
 export const GuideBtn = styled(Link)`
@@ -69,7 +68,6 @@ export const HelperBox = styled.div`
 export const GuideBox = styled.div`
   width: 100%;
   padding: 40px;
-  background: ${({ theme }) => theme.white};
   color: ${({ theme }) => theme.black};
   display: flex;
   flex-direction: column;

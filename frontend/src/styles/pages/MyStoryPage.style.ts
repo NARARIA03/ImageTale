@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { PrimaryBtn } from "./MainPage.style";
+import { HelperBox, PrimaryBtn } from "./MainPage.style";
 
 export const MyStoryPageLayout = styled.div`
   width: 100vw;
+  position: relative;
 `;
 
 export const NoMyStoryBox = styled.div`
@@ -18,6 +19,8 @@ export const NoMyStoryBox = styled.div`
     margin-bottom: 16px;
   }
 `;
+
+export const MyStoryHelperBox = styled(HelperBox)``;
 
 export const MyStoryGrid = styled.div`
   padding: 16px;

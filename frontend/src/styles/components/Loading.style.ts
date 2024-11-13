@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-const spin = keyframes`
+export const spin = keyframes`
   from {
     transform: rotate(0deg);
   }
@@ -18,6 +18,7 @@ export const LoadingLayout = styled.div`
 
   div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 16px;
@@ -30,9 +31,9 @@ export const LoadingLayout = styled.div`
 `;
 
 export const Spinner = styled.div`
-  width: 32px;
-  height: 32px;
-  border: 4px solid ${({ theme }) => theme.black};
+  width: 64px;
+  height: 64px;
+  border: 6px solid ${({ theme }) => theme.black};
   border-radius: 9999px;
   border-top-color: transparent;
   animation: ${spin} 1s linear infinite;
