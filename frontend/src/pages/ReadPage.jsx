@@ -1,5 +1,4 @@
 import { useLocation } from "react-router-dom";
-import { MyStoryBook, MyStoryBookData } from "../types/myStoryBookTypes";
 import { useRef, useState } from "react";
 import { useTalkinghead } from "../hooks/useTalkinghead";
 import EndPopup from "../components/storybookpage/EndPopup";
@@ -8,13 +7,13 @@ import { Text } from "../components/storybookpage/Text";
 import { Image } from "../components/storybookpage/Image";
 import * as S from "../styles/pages/ReadPage.style";
 
-export default function ReadPage(): JSX.Element {
-  const { state } = useLocation() as { state: { myStoryBook: MyStoryBook } };
+export default function ReadPage() {
+  const { state } = useLocation();
   const { myStoryBook } = state;
 
-  const [curPage, setCurPage] = useState<MyStoryBookData>(myStoryBook.data[0]);
-  const [endStoryFlag, setEndStoryFlag] = useState<boolean>(false);
-  const [bookChange, setBookChange] = useState<string>("");
+  const [curPage, setCurPage] = useState(myStoryBook.data[0]);
+  const [endStoryFlag, setEndStoryFlag] = useState(false);
+  const [bookChange, setBookChange] = useState("");
   const {
     disableTalkingHeadFlag,
     hideTalkingHeadFlag,
@@ -22,7 +21,7 @@ export default function ReadPage(): JSX.Element {
     toggleHideTalkingHead,
   } = useTalkinghead();
 
-  const bookRef = useRef();
+  const bookRef = useRef(null);
 
   const prevBtnHandler = () => {
     if (bookChange !== "flipping") {
@@ -55,7 +54,6 @@ export default function ReadPage(): JSX.Element {
             <video src={curPage.talkinghead} autoPlay playsInline />
           )}
         </S.TalkingheadBox>
-
         <StoryBookHeader
           toggleHideTalkingHead={toggleHideTalkingHead}
           toggleDisableTalkingHead={toggleDisableTalkingHead}

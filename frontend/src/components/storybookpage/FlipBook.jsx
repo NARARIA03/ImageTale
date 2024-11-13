@@ -1,18 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { StoryBookData } from "../../types/storyBookTypes";
 import StoryBookHeader from "./StoryBookHeader";
 import { Image } from "./Image";
 import { Text } from "./Text";
 import { useTalkinghead } from "../../hooks/useTalkinghead";
 import * as S from "../../styles/components/storybookpage/FlipBook.style";
 
-interface Props {
-  curPage: StoryBookData;
-  prevBtnHandler: () => void;
-  nextBtnHandler: () => void;
-  storyBooks: StoryBookData[];
-  isDarkness: boolean;
-}
+// interface Props {
+//   curPage: StoryBookData;
+//   prevBtnHandler: () => void;
+//   nextBtnHandler: () => void;
+//   storyBooks: StoryBookData[];
+//   isDarkness: boolean;
+// }
 
 export default function FlipBook({
   curPage,
@@ -20,9 +19,9 @@ export default function FlipBook({
   nextBtnHandler,
   storyBooks,
   isDarkness,
-}: Props): JSX.Element {
-  const [bookChange, setBookChange] = useState<string>("");
-  const bookRef = useRef();
+}) {
+  const [bookChange, setBookChange] = useState("");
+  const bookRef = useRef(null);
 
   const {
     disableTalkingHeadFlag,
@@ -46,7 +45,6 @@ export default function FlipBook({
           <video src={curPage.talkinghead} autoPlay />
         )}
       </S.TalkingheadBox>
-
       <StoryBookHeader
         toggleHideTalkingHead={toggleHideTalkingHead}
         toggleDisableTalkingHead={toggleDisableTalkingHead}
