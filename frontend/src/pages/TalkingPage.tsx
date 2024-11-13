@@ -31,22 +31,22 @@ export default function TalkingPage(): JSX.Element {
       setIsSubmitting(true);
       const story = myStoryBook.data.map((page) => page.content).join(". ");
       const userMessage: Message = { type: "user", text: inputValue };
-
+      setInputValue("");
       setMessages((prev) => [...prev, userMessage]);
 
       const { data } = await axios.post<{ answer: string }>(
         `${import.meta.env.VITE_APP_API_URL}/talking`,
         {
-          query: inputValue,
+          query: userMessage.text,
           story: story,
         }
       );
       setMessages((prev) => [...prev, { type: "response", text: data.answer }]);
     } catch (e) {
+      setInputValue("");
       console.error(e);
     } finally {
       setIsSubmitting(false);
-      setInputValue("");
     }
   };
 
