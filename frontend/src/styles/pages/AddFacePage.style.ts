@@ -130,4 +130,8 @@ export const SubmitBtn = styled.button`
   &:hover {
     background: ${({ theme }) => theme.deepblue};
   }
+
+  &:disabled {
+    background: ${({ theme }) => theme.lightgrey};
+  }
 `;

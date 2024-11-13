@@ -66,7 +66,9 @@ export default function AddFacePage(): JSX.Element {
               onChange={handleFileChange}
             />
           </S.UploadBox>
-          <S.SubmitBtn type="submit">완료</S.SubmitBtn>
+          <S.SubmitBtn type="submit" disabled={!preview}>
+            완료
+          </S.SubmitBtn>
         </S.UploadForm>
       </S.MainBox>
     </S.AddFacePageLayout>

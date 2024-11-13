@@ -3,6 +3,7 @@ import NavBar from "../components/NavBar";
 import UploadLoading from "../components/UploadLoading";
 import * as S from "../styles/pages/AddVoicePage.style";
 import { FaUpload } from "react-icons/fa6";
+import axios from "axios";
 
 export default function AddVoicePage(): JSX.Element {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -15,14 +16,23 @@ export default function AddVoicePage(): JSX.Element {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    setIsLoading(true);
-    e.preventDefault();
-    setTimeout(() => {
-      setIsLoading(false);
-      alert("음성이 업로드 되었습니다. 토킹 헤드 생성까지 잠시 기다려주세요.");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      setIsLoading(true);
+      e.preventDefault();
+      const { data } = await axios.post<{ success: boolean }>(
+        `${import.meta.env.VITE_APP_API_URL}/upload`,
+        { fileName }
+      );
+      if (data.success)
+        alert(
+          "음성이 업로드 되었습니다. 토킹 헤드 생성까지 잠시 기다려주세요."
+        );
+    } catch (e) {
+      console.error(e);
+    } finally {
       window.location.reload();
-    }, 3000);
+    }
   };
 
   return (
@@ -68,7 +78,9 @@ export default function AddVoicePage(): JSX.Element {
               onChange={handleFileChange}
             />
           </S.UploadBox>
-          <S.SubmitBtn type="submit">완료</S.SubmitBtn>
+          <S.SubmitBtn type="submit" disabled={fileName === ""}>
+            완료
+          </S.SubmitBtn>
         </S.UploadForm>
       </S.VoiceMainBox>
     </S.AddVoicePageLayout>

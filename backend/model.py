@@ -36,3 +36,7 @@ class MyStoryBook(BaseModel):
     introduction: str
     thumbnail: str
     data: List[MyStoryBookData]
+
+
+class VoiceUploadReq(BaseModel):
+    fileName: str
