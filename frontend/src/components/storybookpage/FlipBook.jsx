@@ -5,14 +5,6 @@ import { Text } from "./Text";
 import { useTalkinghead } from "../../hooks/useTalkinghead";
 import * as S from "../../styles/components/storybookpage/FlipBook.style";
 
-// interface Props {
-//   curPage: StoryBookData;
-//   prevBtnHandler: () => void;
-//   nextBtnHandler: () => void;
-//   storyBooks: StoryBookData[];
-//   isDarkness: boolean;
-// }
-
 export default function FlipBook({
   curPage,
   prevBtnHandler,
@@ -91,7 +83,6 @@ export default function FlipBook({
                   }
                 }}
                 key={`${i}-text`}
-                page={storyBook.page.toString()}
                 text={storyBook.content}
               />
             );

@@ -88,7 +88,6 @@ export default function ReadPage() {
                 <Text
                   onClick={nextBtnHandler}
                   key={`${i}-text`}
-                  page={storyBook.page.toString()}
                   text={storyBook.content}
                 />
               );
